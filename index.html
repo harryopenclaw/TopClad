@@ -9,87 +9,126 @@
 
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
-      background: #0f1117;
-      color: #e8e8e8;
-      min-height: 100vh;
+      background: #f4f6f9;
+      color: #1e2d3d;
     }
 
-    header {
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-      padding: 48px 32px 40px;
-      text-align: center;
-      border-bottom: 3px solid #e63946;
+    /* NAV */
+    nav {
+      background: #fff;
+      border-bottom: 3px solid #1e3d5c;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
     }
 
-    header h1 {
-      font-size: 2.8rem;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+    }
+
+    .logo-text {
+      line-height: 1.1;
+    }
+
+    .logo-text .name {
+      font-size: 1.3rem;
       font-weight: 800;
-      letter-spacing: 2px;
-      color: #ffffff;
-    }
-
-    header h1 span {
-      color: #e63946;
-    }
-
-    header p {
-      margin-top: 10px;
-      font-size: 1.05rem;
-      color: #a0aec0;
+      color: #1e3d5c;
       letter-spacing: 0.5px;
     }
 
-    .badge {
-      display: inline-block;
-      margin-top: 16px;
-      background: #e63946;
-      color: #fff;
-      padding: 4px 14px;
-      border-radius: 20px;
-      font-size: 0.78rem;
-      font-weight: 700;
+    .logo-text .sub {
+      font-size: 0.62rem;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
+      color: #5a7a99;
+      font-weight: 600;
     }
 
+    .nav-badge {
+      background: #1e3d5c;
+      color: #fff;
+      padding: 5px 14px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #1e3d5c 0%, #2d5f8a 100%);
+      padding: 56px 32px 50px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .hero h1 span { color: #7eb8e0; }
+
+    .hero p {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: #b8d4ec;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* MAIN */
     main {
       max-width: 860px;
       margin: 48px auto;
       padding: 0 24px;
     }
 
-    .section-title {
-      font-size: 0.78rem;
+    .section-label {
+      font-size: 0.72rem;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #e63946;
-      margin-bottom: 20px;
+      letter-spacing: 2.5px;
+      color: #5a7a99;
       font-weight: 700;
+      margin-bottom: 18px;
     }
 
     .cards {
       display: grid;
-      gap: 20px;
+      gap: 18px;
     }
 
     .card {
-      background: #1a1a2e;
-      border: 1px solid #2d2d4e;
-      border-left: 4px solid #e63946;
-      border-radius: 10px;
-      padding: 28px 32px;
+      background: #fff;
+      border: 1px solid #d6e4f0;
+      border-left: 5px solid #1e3d5c;
+      border-radius: 8px;
+      padding: 26px 28px;
       text-decoration: none;
       color: inherit;
       display: flex;
       align-items: flex-start;
-      gap: 20px;
-      transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+      gap: 18px;
+      transition: box-shadow 0.15s, transform 0.15s;
     }
 
     .card:hover {
+      box-shadow: 0 4px 20px rgba(30,61,92,0.12);
       transform: translateY(-2px);
-      background: #1f1f3a;
-      border-left-color: #ff6b6b;
     }
 
     .card-icon {
@@ -99,98 +138,104 @@
     }
 
     .card-body h2 {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      color: #ffffff;
+      color: #1e3d5c;
       margin-bottom: 6px;
     }
 
     .card-body p {
-      font-size: 0.92rem;
-      color: #a0aec0;
+      font-size: 0.88rem;
+      color: #5a6e80;
       line-height: 1.6;
     }
 
     .card-meta {
       margin-top: 10px;
       display: flex;
-      gap: 8px;
+      gap: 6px;
       flex-wrap: wrap;
     }
 
     .tag {
-      background: #0f3460;
-      color: #90cdf4;
       padding: 2px 10px;
       border-radius: 12px;
-      font-size: 0.75rem;
-      font-weight: 600;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
     }
 
-    .tag.red {
-      background: #3d0a0a;
-      color: #fc8181;
-    }
+    .tag.navy { background: #dceaf7; color: #1e3d5c; }
+    .tag.draft { background: #fff3cd; color: #856404; }
+    .tag.active { background: #d4edda; color: #155724; }
 
-    .tag.green {
-      background: #0a2e1a;
-      color: #68d391;
-    }
-
+    /* FOOTER */
     footer {
+      background: #1e3d5c;
+      color: #7eb8e0;
       text-align: center;
-      padding: 40px 20px;
-      color: #4a5568;
+      padding: 32px 20px;
       font-size: 0.82rem;
-      border-top: 1px solid #1a1a2e;
       margin-top: 60px;
     }
 
-    footer a {
-      color: #e63946;
-      text-decoration: none;
-    }
-
+    footer a { color: #fff; text-decoration: none; }
     footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Top<span>Clad</span> Metal Roofing</h1>
-  <p>Halifax, Nova Scotia — Internal Action Planning Hub</p>
-  <span class="badge">🔒 Internal Use</span>
-</header>
+<nav>
+  <a class="logo" href="index.html">
+    <!-- TopClad diamond logo mark (SVG recreation) -->
+    <svg class="logo-mark" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="38" height="38" rx="4" fill="#1e3d5c"/>
+      <polygon points="19,6 32,19 19,32 6,19" fill="none" stroke="#7eb8e0" stroke-width="2.5"/>
+      <polygon points="19,11 27,19 19,27 11,19" fill="#7eb8e0" opacity="0.3"/>
+      <line x1="19" y1="6" x2="19" y2="32" stroke="#fff" stroke-width="1.5" opacity="0.5"/>
+      <line x1="6" y1="19" x2="32" y2="19" stroke="#fff" stroke-width="1.5" opacity="0.5"/>
+    </svg>
+    <div class="logo-text">
+      <div class="name">TopClad</div>
+      <div class="sub">Metal Roofing</div>
+    </div>
+  </a>
+  <span class="nav-badge">Internal Hub</span>
+</nav>
+
+<div class="hero">
+  <h1>Action <span>Planning</span> Hub</h1>
+  <p>Internal resources, drafts, and strategy documents for the TopClad team.</p>
+</div>
 
 <main>
-  <p class="section-title">📋 Active Initiatives</p>
+  <p class="section-label">📋 Active Initiatives</p>
 
   <div class="cards">
 
-    <!-- Card 1: Recruiting Strategy -->
     <a class="card" href="recruiting-strategy.html">
       <div class="card-icon">🎯</div>
       <div class="card-body">
         <h2>Recruiting Strategy — Construction Leaders</h2>
         <p>Research summary: best platforms, ad techniques, and wording strategies for recruiting roofing crew leaders and site supervisors in Atlantic Canada.</p>
         <div class="card-meta">
-          <span class="tag">Strategy</span>
-          <span class="tag">HR</span>
-          <span class="tag green">Active</span>
+          <span class="tag navy">Strategy</span>
+          <span class="tag navy">HR</span>
+          <span class="tag active">Active</span>
         </div>
       </div>
     </a>
 
-    <!-- Card 2: Live Job Ad Draft -->
     <a class="card" href="job-ad.html">
       <div class="card-icon">📄</div>
       <div class="card-body">
         <h2>Job Ad Draft — Roofing Crew Leader / Site Supervisor</h2>
         <p>Ready-to-post job ad for roofing crew leaders. Includes compensation, benefits, requirements, and company description. Optimized for Indeed, LinkedIn, and Facebook Jobs.</p>
         <div class="card-meta">
-          <span class="tag">Recruiting</span>
-          <span class="tag">Job Ad</span>
-          <span class="tag red">Draft</span>
+          <span class="tag navy">Recruiting</span>
+          <span class="tag navy">Job Ad</span>
+          <span class="tag draft">Draft</span>
         </div>
       </div>
     </a>
@@ -199,7 +244,7 @@
 </main>
 
 <footer>
-  TopClad Metal Roofing &mdash; <a href="https://topclad.ca" target="_blank">topclad.ca</a> &mdash; Halifax, NS
+  TopClad Metal Roofing &mdash; <a href="https://topclad.ca" target="_blank">topclad.ca</a> &mdash; Halifax, Nova Scotia &mdash; 902.830.2032
 </footer>
 
 </body>

@@ -9,46 +9,58 @@
 
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
-      background: #0f1117;
-      color: #e8e8e8;
-      min-height: 100vh;
+      background: #f4f6f9;
+      color: #1e2d3d;
     }
 
-    .topbar {
-      background: #1a1a2e;
-      padding: 14px 32px;
-      border-bottom: 2px solid #e63946;
+    nav {
+      background: #fff;
+      border-bottom: 3px solid #1e3d5c;
+      padding: 0 32px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      justify-content: space-between;
+      height: 70px;
     }
 
-    .topbar a {
-      color: #a0aec0;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       text-decoration: none;
-      font-size: 0.88rem;
     }
 
-    .topbar a:hover { color: #fff; }
-    .topbar span { color: #4a5568; }
-
-    header {
-      background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
-      padding: 40px 32px 36px;
-      border-bottom: 3px solid #e63946;
-    }
-
-    header h1 {
-      font-size: 2rem;
+    .logo-text .name {
+      font-size: 1.3rem;
       font-weight: 800;
+      color: #1e3d5c;
+      letter-spacing: 0.5px;
+    }
+
+    .logo-text .sub {
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #5a7a99;
+      font-weight: 600;
+    }
+
+    .breadcrumb {
+      font-size: 0.85rem;
+      color: #5a7a99;
+    }
+
+    .breadcrumb a { color: #1e3d5c; text-decoration: none; font-weight: 600; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    .hero {
+      background: linear-gradient(135deg, #1e3d5c 0%, #2d5f8a 100%);
+      padding: 40px 32px 36px;
       color: #fff;
     }
 
-    header p {
-      color: #a0aec0;
-      margin-top: 8px;
-      font-size: 0.95rem;
-    }
+    .hero h1 { font-size: 1.8rem; font-weight: 800; }
+    .hero p { color: #b8d4ec; margin-top: 8px; font-size: 0.95rem; }
 
     main {
       max-width: 820px;
@@ -57,104 +69,150 @@
     }
 
     h2 {
-      font-size: 1.25rem;
+      font-size: 1.05rem;
       font-weight: 700;
-      color: #e63946;
+      color: #1e3d5c;
+      text-transform: uppercase;
+      letter-spacing: 1px;
       margin: 36px 0 14px;
       padding-bottom: 8px;
-      border-bottom: 1px solid #2d2d4e;
+      border-bottom: 2px solid #d6e4f0;
     }
 
     h2:first-child { margin-top: 0; }
 
-    p { line-height: 1.7; color: #cbd5e0; margin-bottom: 12px; font-size: 0.95rem; }
+    p {
+      font-size: 0.93rem;
+      color: #3d5166;
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
 
     table {
       width: 100%;
       border-collapse: collapse;
       margin-bottom: 16px;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 8px rgba(30,61,92,0.07);
     }
 
+    thead { background: #1e3d5c; }
+
     th {
-      background: #1a1a2e;
-      color: #e63946;
-      padding: 10px 14px;
+      padding: 11px 16px;
       text-align: left;
       font-weight: 700;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      color: #b8d4ec;
     }
 
     td {
-      padding: 10px 14px;
-      border-bottom: 1px solid #2d2d4e;
-      color: #cbd5e0;
+      padding: 11px 16px;
+      border-bottom: 1px solid #e8f0f8;
+      color: #3d5166;
       vertical-align: top;
     }
 
-    tr:hover td { background: #1a1a2e; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #f0f7ff; }
 
-    ul, ol {
-      padding-left: 20px;
+    ul {
+      padding-left: 0;
+      list-style: none;
       margin-bottom: 12px;
     }
 
     li {
-      margin-bottom: 8px;
-      line-height: 1.6;
-      color: #cbd5e0;
-      font-size: 0.95rem;
+      padding: 5px 0;
+      font-size: 0.93rem;
+      color: #3d5166;
+      line-height: 1.65;
+      display: flex;
+      gap: 10px;
+    }
+
+    li::before {
+      content: "→";
+      color: #2d5f8a;
+      flex-shrink: 0;
+      font-weight: 700;
     }
 
     .tip-box {
-      background: #0a2e1a;
-      border-left: 4px solid #68d391;
+      background: #e8f5e9;
+      border-left: 4px solid #2e7d32;
       border-radius: 6px;
-      padding: 16px 20px;
-      margin: 16px 0;
-      font-size: 0.92rem;
-      color: #9ae6b4;
+      padding: 14px 18px;
+      margin: 14px 0;
+      font-size: 0.9rem;
+      color: #1b5e20;
     }
 
     .warn-box {
-      background: #3d0a0a;
-      border-left: 4px solid #fc8181;
+      background: #fff8e1;
+      border-left: 4px solid #f9a825;
       border-radius: 6px;
-      padding: 16px 20px;
-      margin: 16px 0;
-      font-size: 0.92rem;
-      color: #feb2b2;
+      padding: 14px 18px;
+      margin: 14px 0;
+      font-size: 0.9rem;
+      color: #6d4c00;
     }
 
     .back-btn {
       display: inline-block;
-      margin-top: 40px;
+      margin-top: 36px;
       padding: 10px 22px;
-      background: #e63946;
+      background: #1e3d5c;
       color: #fff;
       border-radius: 6px;
       text-decoration: none;
       font-weight: 700;
       font-size: 0.88rem;
+      transition: background 0.15s;
     }
 
-    .back-btn:hover { background: #c1121f; }
+    .back-btn:hover { background: #2d5f8a; }
+
+    footer {
+      background: #1e3d5c;
+      color: #7eb8e0;
+      text-align: center;
+      padding: 28px 20px;
+      font-size: 0.82rem;
+      margin-top: 60px;
+    }
+
+    footer a { color: #fff; text-decoration: none; }
   </style>
 </head>
 <body>
 
-<div class="topbar">
-  <a href="index.html">← Back to Hub</a>
-  <span>/</span>
-  <span style="color:#e8e8e8">Recruiting Strategy</span>
-</div>
+<nav>
+  <a class="logo" href="index.html">
+    <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="38" height="38" rx="4" fill="#1e3d5c"/>
+      <polygon points="19,6 32,19 19,32 6,19" fill="none" stroke="#7eb8e0" stroke-width="2.5"/>
+      <polygon points="19,11 27,19 19,27 11,19" fill="#7eb8e0" opacity="0.3"/>
+      <line x1="19" y1="6" x2="19" y2="32" stroke="#fff" stroke-width="1.5" opacity="0.5"/>
+      <line x1="6" y1="19" x2="32" y2="19" stroke="#fff" stroke-width="1.5" opacity="0.5"/>
+    </svg>
+    <div class="logo-text">
+      <div class="name">TopClad</div>
+      <div class="sub">Metal Roofing</div>
+    </div>
+  </a>
+  <span class="breadcrumb"><a href="index.html">Hub</a> / Recruiting Strategy</span>
+</nav>
 
-<header>
+<div class="hero">
   <h1>🎯 Recruiting Strategy — Construction Leaders</h1>
   <p>Research summary: platforms, ad techniques, and wording best practices for Atlantic Canada trades recruitment.</p>
-</header>
+</div>
 
 <main>
 
@@ -242,7 +300,7 @@
 
   <h2>Referral Program Recommendation</h2>
   <p>
-    In trades, the best hires come from within existing crews. Consider setting up a structured referral bonus:
+    In trades, the best hires come from within existing crews. Consider a structured referral bonus:
     <strong>$500 on hire, $500 after 90 days</strong>. Announce it at a crew meeting and post it in the break area.
     Referrals in construction carry an implicit quality endorsement — tradespeople don't recommend bad workers to their own crew.
   </p>
@@ -250,6 +308,10 @@
   <a class="back-btn" href="index.html">← Back to Hub</a>
 
 </main>
+
+<footer>
+  TopClad Metal Roofing &mdash; <a href="https://topclad.ca" target="_blank">topclad.ca</a> &mdash; Halifax, NS
+</footer>
 
 </body>
 </html>
