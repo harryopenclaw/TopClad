@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>42 Newcomb — Panel Diagram</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --accent: #3b82f6;
+    --accent2: #22c55e;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --panel: #2563eb;
+    --ridge: #ef4444;
+    --vent: #f59e0b;
+    --porch: #8b5cf6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); padding: 20px; }
+  h1 { font-size: 1.6rem; margin-bottom: 4px; }
+  .subtitle { color: var(--muted); font-size: 0.9rem; margin-bottom: 24px; }
+  .container { max-width: 1000px; margin: 0 auto; }
+  .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 28px; }
+  .summary-card { background: var(--card); border-radius: 10px; padding: 14px 16px; }
+  .summary-card .label { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+  .summary-card .value { font-size: 1.3rem; font-weight: 700; }
+  .diagram-wrap { background: var(--card); border-radius: 12px; padding: 24px; margin-bottom: 24px; }
+  .diagram-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 16px; }
+  svg { width: 100%; height: auto; }
+  .panel-rect { stroke: rgba(255,255,255,0.25); stroke-width: 0.5; }
+  .panel-label { font-size: 3.2px; fill: white; font-weight: 600; font-family: system-ui; }
+  .dim-text { font-size: 3.5px; fill: #f1f5f9; font-family: system-ui; font-weight: 600; }
+  .dim-line { stroke: #94a3b8; stroke-width: 0.3; }
+  .ridge-line { stroke: #ef4444; stroke-width: 1; stroke-dasharray: 2,1; }
+  .ridge-label { font-size: 3px; fill: #ef4444; font-family: system-ui; font-weight: 600; }
+  .vent-circle { fill: #f59e0b; }
+  .vent-label { font-size: 2.5px; fill: #f59e0b; font-family: system-ui; }
+  .section-label { font-size: 4px; fill: #f1f5f9; font-family: system-ui; font-weight: 700; opacity: 0.4; }
+  .panel-list { background: var(--card); border-radius: 12px; padding: 24px; margin-bottom: 24px; }
+  .panel-list h2 { font-size: 1.1rem; margin-bottom: 14px; }
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 8px 10px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  td { padding: 8px 10px; font-size: 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  tr:last-child td { border-bottom: none; }
+  .section-header td { font-weight: 700; color: var(--accent); padding-top: 14px; font-size: 0.95rem; }
+  .total-row td { font-weight: 700; border-top: 2px solid var(--accent); padding-top: 12px; font-size: 1rem; }
+  .notes { background: var(--card); border-radius: 12px; padding: 24px; }
+  .notes h2 { font-size: 1.1rem; margin-bottom: 12px; }
+  .notes ul { list-style: none; }
+  .notes li { padding: 6px 0; color: var(--muted); font-size: 0.88rem; }
+  .notes li::before { content: "→ "; color: var(--accent); font-weight: 700; }
+  .badge { display: inline-block; background: var(--accent); color: white; font-size: 0.7rem; padding: 2px 8px; border-radius: 99px; font-weight: 600; margin-left: 8px; vertical-align: middle; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🏠 42 Newcomb — Panel Diagram</h1>
+  <p class="subtitle">Roofing panel layout — simple gable + porch</p>
+
+  <div class="summary">
+    <div class="summary-card"><div class="label">Ridge Length</div><div class="value">43' 6"</div></div>
+    <div class="summary-card"><div class="label">Slope (each side)</div><div class="value">24'</div></div>
+    <div class="summary-card"><div class="label">Pitch</div><div class="value">4:12</div></div>
+    <div class="summary-card"><div class="label">Porch Width</div><div class="value">28'</div></div>
+    <div class="summary-card"><div class="label">Penetrations</div><div class="value">2</div></div>
+    <div class="summary-card"><div class="label">Panel Width</div><div class="value">36"</div></div>
+  </div>
+
+  <!-- FRONT PLANE -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">Front Plane (Eave Side) <span class="badge">15 panels × 24'</span></div>
+    <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+      <defs><pattern id="grid" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M 4 0 L 0 0 0 4" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.2"/></pattern></defs>
+      <rect x="0" y="0" width="200" height="120" fill="url(#grid)"/>
+      <rect x="20" y="15" width="160" height="85" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.4" rx="1"/>
+      <rect x="20" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(37,99,235,0.35)"/>
+      <rect x="30.67" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(37,99,235,0.25)"/>
+      <rect x="41.33" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(37,99,235,0.35)"/>
+      <rect x="52" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(37,99,235,0.25)"/>
+      <rect x="62.67" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(37,99,235,0.35)"/>
+      <rect x="73.33" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(37,99,235,0.25)"/>
+      <rect x="84" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(37,99,235,0.35)"/>
+      <rect x="94.67" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(37,99,235,0.25)"/>
+      <rect x="105.33" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(37,99,235,0.35)"/>
+      <rect x="116" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(37,99,235,0.25)"/>
+      <rect x="126.67" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(37,99,235,0.35)"/>
+      <rect x="137.33" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(37,99,235,0.25)"/>
+      <rect x="148" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(37,99,235,0.35)"/>
+      <rect x="158.67" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(37,99,235,0.25)"/>
+      <rect x="169.33" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(37,99,235,0.35)"/>
+      <text x="25.3" y="60" class="panel-label" text-anchor="middle">1</text>
+      <text x="36" y="60" class="panel-label" text-anchor="middle">2</text>
+      <text x="46.7" y="60" class="panel-label" text-anchor="middle">3</text>
+      <text x="57.3" y="60" class="panel-label" text-anchor="middle">4</text>
+      <text x="68" y="60" class="panel-label" text-anchor="middle">5</text>
+      <text x="78.7" y="60" class="panel-label" text-anchor="middle">6</text>
+      <text x="89.3" y="60" class="panel-label" text-anchor="middle">7</text>
+      <text x="100" y="60" class="panel-label" text-anchor="middle">8</text>
+      <text x="110.7" y="60" class="panel-label" text-anchor="middle">9</text>
+      <text x="121.3" y="60" class="panel-label" text-anchor="middle">10</text>
+      <text x="132" y="60" class="panel-label" text-anchor="middle">11</text>
+      <text x="142.7" y="60" class="panel-label" text-anchor="middle">12</text>
+      <text x="153.3" y="60" class="panel-label" text-anchor="middle">13</text>
+      <text x="164" y="60" class="panel-label" text-anchor="middle">14</text>
+      <text x="174.7" y="60" class="panel-label" text-anchor="middle">15</text>
+      <line x1="18" y1="15" x2="182" y2="15" class="ridge-line"/>
+      <text x="100" y="11" class="ridge-label" text-anchor="middle">RIDGE</text>
+      <line x1="18" y1="100" x2="182" y2="100" stroke="#22c55e" stroke-width="0.6"/>
+      <text x="100" y="107" style="font-size:3px; fill:#22c55e; font-family:system-ui; font-weight:600;" text-anchor="middle">EAVE</text>
+      <circle cx="145" cy="35" r="2" class="vent-circle" opacity="0.8"/>
+      <text x="145" y="30" class="vent-label" text-anchor="middle">VENT</text>
+      <line x1="20" y1="114" x2="180" y2="114" class="dim-line"/><line x1="20" y1="112" x2="20" y2="116" class="dim-line"/><line x1="180" y1="112" x2="180" y2="116" class="dim-line"/>
+      <text x="100" y="118" class="dim-text" text-anchor="middle">43' 6"</text>
+      <line x1="190" y1="15" x2="190" y2="100" class="dim-line"/><line x1="188" y1="15" x2="192" y2="15" class="dim-line"/><line x1="188" y1="100" x2="192" y2="100" class="dim-line"/>
+      <text x="196" y="60" class="dim-text" text-anchor="middle" transform="rotate(90,196,60)">24'</text>
+      <text x="100" y="75" class="section-label" text-anchor="middle">FRONT PLANE</text>
+    </svg>
+  </div>
+
+  <!-- BACK PLANE -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">Back Plane <span class="badge">15 panels × 24'</span></div>
+    <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="200" height="120" fill="url(#grid)"/>
+      <rect x="20" y="15" width="160" height="85" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.4" rx="1"/>
+      <rect x="20" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(34,197,94,0.3)"/>
+      <rect x="30.67" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(34,197,94,0.2)"/>
+      <rect x="41.33" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(34,197,94,0.3)"/>
+      <rect x="52" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(34,197,94,0.2)"/>
+      <rect x="62.67" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(34,197,94,0.3)"/>
+      <rect x="73.33" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(34,197,94,0.2)"/>
+      <rect x="84" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(34,197,94,0.3)"/>
+      <rect x="94.67" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(34,197,94,0.2)"/>
+      <rect x="105.33" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(34,197,94,0.3)"/>
+      <rect x="116" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(34,197,94,0.2)"/>
+      <rect x="126.67" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(34,197,94,0.3)"/>
+      <rect x="137.33" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(34,197,94,0.2)"/>
+      <rect x="148" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(34,197,94,0.3)"/>
+      <rect x="158.67" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(34,197,94,0.2)"/>
+      <rect x="169.33" y="15" width="10.67" height="85" class="panel-rect" fill="rgba(34,197,94,0.3)"/>
+      <text x="25.3" y="60" class="panel-label" text-anchor="middle">1</text>
+      <text x="36" y="60" class="panel-label" text-anchor="middle">2</text>
+      <text x="46.7" y="60" class="panel-label" text-anchor="middle">3</text>
+      <text x="57.3" y="60" class="panel-label" text-anchor="middle">4</text>
+      <text x="68" y="60" class="panel-label" text-anchor="middle">5</text>
+      <text x="78.7" y="60" class="panel-label" text-anchor="middle">6</text>
+      <text x="89.3" y="60" class="panel-label" text-anchor="middle">7</text>
+      <text x="100" y="60" class="panel-label" text-anchor="middle">8</text>
+      <text x="110.7" y="60" class="panel-label" text-anchor="middle">9</text>
+      <text x="121.3" y="60" class="panel-label" text-anchor="middle">10</text>
+      <text x="132" y="60" class="panel-label" text-anchor="middle">11</text>
+      <text x="142.7" y="60" class="panel-label" text-anchor="middle">12</text>
+      <text x="153.3" y="60" class="panel-label" text-anchor="middle">13</text>
+      <text x="164" y="60" class="panel-label" text-anchor="middle">14</text>
+      <text x="174.7" y="60" class="panel-label" text-anchor="middle">15</text>
+      <line x1="18" y1="15" x2="182" y2="15" class="ridge-line"/>
+      <text x="100" y="11" class="ridge-label" text-anchor="middle">RIDGE</text>
+      <line x1="18" y1="100" x2="182" y2="100" stroke="#22c55e" stroke-width="0.6"/>
+      <text x="100" y="107" style="font-size:3px; fill:#22c55e; font-family:system-ui; font-weight:600;" text-anchor="middle">EAVE</text>
+      <circle cx="55" cy="70" r="2" class="vent-circle" opacity="0.8"/>
+      <text x="55" y="66" class="vent-label" text-anchor="middle">VENT</text>
+      <line x1="20" y1="114" x2="180" y2="114" class="dim-line"/><line x1="20" y1="112" x2="20" y2="116" class="dim-line"/><line x1="180" y1="112" x2="180" y2="116" class="dim-line"/>
+      <text x="100" y="118" class="dim-text" text-anchor="middle">43' 6"</text>
+      <line x1="190" y1="15" x2="190" y2="100" class="dim-line"/><line x1="188" y1="15" x2="192" y2="15" class="dim-line"/><line x1="188" y1="100" x2="192" y2="100" class="dim-line"/>
+      <text x="196" y="60" class="dim-text" text-anchor="middle" transform="rotate(90,196,60)">24'</text>
+      <text x="100" y="75" class="section-label" text-anchor="middle">BACK PLANE</text>
+    </svg>
+  </div>
+
+  <!-- PORCH -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">Porch Roof <span class="badge">10 panels</span></div>
+    <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="200" height="80" fill="url(#grid)"/>
+      <rect x="30" y="12" width="140" height="45" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.4" rx="1"/>
+      <rect x="30" y="12" width="14" height="45" class="panel-rect" fill="rgba(139,92,246,0.3)"/>
+      <rect x="44" y="12" width="14" height="45" class="panel-rect" fill="rgba(139,92,246,0.2)"/>
+      <rect x="58" y="12" width="14" height="45" class="panel-rect" fill="rgba(139,92,246,0.3)"/>
+      <rect x="72" y="12" width="14" height="45" class="panel-rect" fill="rgba(139,92,246,0.2)"/>
+      <rect x="86" y="12" width="14" height="45" class="panel-rect" fill="rgba(139,92,246,0.3)"/>
+      <rect x="100" y="12" width="14" height="45" class="panel-rect" fill="rgba(139,92,246,0.2)"/>
+      <rect x="114" y="12" width="14" height="45" class="panel-rect" fill="rgba(139,92,246,0.3)"/>
+      <rect x="128" y="12" width="14" height="45" class="panel-rect" fill="rgba(139,92,246,0.2)"/>
+      <rect x="142" y="12" width="14" height="45" class="panel-rect" fill="rgba(139,92,246,0.3)"/>
+      <rect x="156" y="12" width="14" height="45" class="panel-rect" fill="rgba(139,92,246,0.2)"/>
+      <text x="37" y="38" class="panel-label" text-anchor="middle">1</text>
+      <text x="51" y="38" class="panel-label" text-anchor="middle">2</text>
+      <text x="65" y="38" class="panel-label" text-anchor="middle">3</text>
+      <text x="79" y="38" class="panel-label" text-anchor="middle">4</text>
+      <text x="93" y="38" class="panel-label" text-anchor="middle">5</text>
+      <text x="107" y="38" class="panel-label" text-anchor="middle">6</text>
+      <text x="121" y="38" class="panel-label" text-anchor="middle">7</text>
+      <text x="135" y="38" class="panel-label" text-anchor="middle">8</text>
+      <text x="149" y="38" class="panel-label" text-anchor="middle">9</text>
+      <text x="163" y="38" class="panel-label" text-anchor="middle">10</text>
+      <line x1="30" y1="65" x2="170" y2="65" class="dim-line"/><line x1="30" y1="63" x2="30" y2="67" class="dim-line"/><line x1="170" y1="63" x2="170" y2="67" class="dim-line"/>
+      <text x="100" y="72" class="dim-text" text-anchor="middle">28'</text>
+      <text x="100" y="42" class="section-label" text-anchor="middle">PORCH</text>
+      <text x="185" y="35" style="font-size:2.5px; fill:#94a3b8; font-family:system-ui;" text-anchor="middle">depth</text>
+      <text x="185" y="39" style="font-size:2.5px; fill:#f59e0b; font-family:system-ui; font-weight:600;" text-anchor="middle">TBD</text>
+    </svg>
+  </div>
+
+  <!-- Cut list -->
+  <div class="panel-list">
+    <h2>📋 Panel Cut List</h2>
+    <table>
+      <thead><tr><th>Section</th><th>Panels</th><th>Length</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr class="section-header"><td colspan="4">Main Gable</td></tr>
+        <tr><td>Front Plane</td><td>15</td><td>24'</td><td>Ridge to eave, 1 vent penetration</td></tr>
+        <tr><td>Back Plane</td><td>15</td><td>24'</td><td>Ridge to eave, 1 vent penetration</td></tr>
+        <tr class="section-header"><td colspan="4">Porch</td></tr>
+        <tr><td>Porch Roof</td><td>10</td><td>TBD</td><td>Need porch depth/slope measurement</td></tr>
+        <tr class="total-row"><td>TOTAL</td><td>40 panels</td><td>—</td><td>30 @ 24' + 10 @ TBD</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="notes">
+    <h2>📝 Notes & Assumptions</h2>
+    <ul>
+      <li>36" panel coverage width assumed (standard standing seam / snap-lock)</li>
+      <li>43'6" eave ÷ 36" = 14.5 → 15 panels per plane (last panel trimmed ~18")</li>
+      <li>28' porch ÷ 36" = 9.3 → 10 panels for porch</li>
+      <li>Pitch 4:12 — slope factor 1.054, 24' slope ≈ 22'9" horizontal run</li>
+      <li>2 pipe/vent penetrations — need boot flashing</li>
+      <li><strong>Still need:</strong> porch depth, panel profile, and vent locations confirmed</li>
+      <li>Panels run vertically ridge to eave — no horizontal seams at 24'</li>
+    </ul>
+  </div>
+
+  <p style="text-align:center; color:#94a3b8; font-size:0.75rem; margin-top:20px;">42 Newcomb — TopClad — Apr 26, 2026</p>
+</div>
+</body>
+</html>
